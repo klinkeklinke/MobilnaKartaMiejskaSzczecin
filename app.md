@@ -1,40 +1,157 @@
-🎨 Prompt do Figma Make
-Projekt: Mobilna Karta Miejska Szczecin
-🧭 Kontekst i cel projektu
+# Mobilna Karta Miejska Szczecin
+## Projekt aplikacji smart city
 
-Miasto Szczecin chce stworzyć nowoczesną, przyjazną użytkownikowi aplikację mobilną, która zintegruje transport publiczny, płatności miejskie, parkingi, wydarzenia i turystykę w jednym miejscu.
-Celem projektu jest uproszczenie poruszania się po mieście i cyfryzacja miejskich usług w duchu idei smart city.
+**Wersja:** 1.0 | **Data:** 2025-10-25
 
-Aplikacja ma rozwiązać kilka kluczowych problemów:
+---
 
-rozproszenie usług (osobne systemy do biletów, parkingów, eventów, map),
+## 🧭 Kontekst i cel projektu
 
-trudność w zakupie biletu przez turystów,
+### Wizja
+Miasto Szczecin chce stworzyć **nowoczesną, przyjazną użytkownikowi aplikację mobilną**, która zintegruje transport publiczny, płatności miejskie, parkingi, wydarzenia i turystykę w jednym miejscu.
 
-brak integracji między transportem, wydarzeniami i informacjami miejskimi,
+### Misja
+Celem projektu jest **uproszczenie poruszania się po mieście** i **cyfryzacja miejskich usług** w duchu idei smart city, wspierając Szczecin jako **lidera 15-minute city w Polsce**.
 
-niewykorzystany potencjał danych lokalizacyjnych do promocji usług i ofert.
+---
 
-Ma to być jedno cyfrowe narzędzie miejskie, które:
+## 🎯 Kluczowe problemy do rozwiązania
 
-ułatwia mieszkańcom codzienne funkcjonowanie,
+| Problem | Konsekwencje | Rozwiązanie w aplikacji |
+|---------|--------------|-------------------------|
+| **Rozproszenie usług** | Osobne systemy do biletów, parkingów, eventów, map | Jeden ekosystem cyfrowy |
+| **Trudność w zakupie biletu** | Turyści (2,2 mln/rok) nie wiedzą jak kupić bilet | Guest checkout <30 sekund |
+| **Brak integracji** | Transport, wydarzenia i informacje miejskie działają oddzielnie | API-first architecture |
+| **Niewykorzystany potencjał** | Dane lokalizacyjne nie służą promocji usług | Geo-targeting i smart notifications |
 
-pozwala turystom szybko kupić bilet i zaplanować trasę,
+---
 
-wspiera miasto w zarządzaniu mobilnością, komunikacją i promocją wydarzeń.
+## 🌟 Szczecin jako 15-Minute City
 
-👥 Użytkownicy i scenariusze
+### Osiągnięcia
+- 🏆 **#1 w Polsce** - 40,6% mieszkańców ma potrzeby codzienne w zasięgu 15 minut
+- 🥈 **#2 w Europie Środkowo-Wschodniej** (Friendly City Index 2025)
+- 📊 **Dla porównania:** Kraków 30,3%, Wrocław 26,8%, Warszawa 15,8%
 
-1. Mieszkaniec:
-   – szybki zakup biletu i planowanie codziennych tras,
-   – powiadomienia o utrudnieniach i zmianach,
-   – integracja z parkingami i kartą mieszkańca.
+### Co to oznacza dla aplikacji?
+- **Transport publiczny jest kluczowy** - integracja z ZDiTM to must-have
+- **Walkability** - promujemy opcje pieszo i rowerem, nie tylko autem
+- **Lokalne usługi** - pokazujemy co jest blisko użytkownika
+- **Smart routing** - multimodalne planowanie tras (pieszo + tram + bike)
 
-2. Turysta:
-   – guest checkout (bez logowania),
-   – płatności Swish, Klarna, PayPal, Apple Pay, Google Pay,
-   – lokalne rekomendacje tras i wydarzeń,
-   – prosty interfejs „dla odwiedzających”.
+**Źródła:**
+- [SSOM - Szczecin liderem w Polsce](https://som.szczecin.pl/2025/09/23/szczecin-liderem-w-polsce-w-dazeniu-do-miasta-15-minutowego/)
+- [TVP World - Poland's Szczecin closest to ideal of 15-minute city](https://tvpworld.com/89074562/polands-szczecin-closest-to-ideal-of-15-minute-city)
+
+---
+
+## 🎁 Value Proposition
+
+### Jedno cyfrowe narzędzie miejskie, które:
+
+✅ **Ułatwia mieszkańcom codzienne funkcjonowanie**
+- Zakup biletów bez kolejek
+- Real-time informacje o opóźnieniach
+- Personalizowane powiadomienia o zmianach w trasach
+
+✅ **Pozwala turystom szybko kupić bilet i zaplanować trasę**
+- Guest checkout (bez rejestracji)
+- Międzynarodowe metody płatności (PayPal, Apple Pay, Google Pay)
+- Interfejs w 3 językach: PL, DE, EN
+
+✅ **Wspiera miasto w zarządzaniu mobilnością i promocją**
+- Dashboard analytics dla ZDiTM (load balancing, hot spots)
+- Targetowanie komunikatów miejskich
+- Promocja wydarzeń kulturalnych (Filharmonia, Teatry, Sail Szczecin)
+
+---
+
+## 📊 Target Audience - dane faktyczne
+
+### Turyści (2,2 mln rocznie w 2024)
+- **82% z Polski** (głównie: dolnośląskie, śląskie, wielkopolskie)
+- **900k z Niemiec** (61% wszystkich zagranicznych)
+- **City break travelers** - pobyty krótkie, potrzebują szybkiej orientacji
+- **Wielkie wydarzenia:** Sail Szczecin (390k w weekend!), The Tall Ships Races
+
+### Mieszkańcy
+- **40,6% ma usługi w zasięgu 15 minut** (#1 w Polsce!)
+- Regularne korzystanie z transportu publicznego
+- Potrzeba integracji z Kartą Mieszkańca (zniżki, benefity)
+
+**Źródła:**
+- [Głos Szczeciński - 2,2 mln turystów w 2024](https://gs24.pl/od-poczatku-roku-szczecin-odwiedzilo-ponad-2-miliony-turystow-najwiecej-na-final-regat-the-tall-ships-races/ar/c1-18929345)
+- [Visit Szczecin - Tourism Statistics](https://visitszczecin.eu/en/news/874-more-and-more-tourists-visit-szczecin)
+
+---
+
+## 👥 Persony użytkowników
+
+### Persona 1: **Ania - Mieszkanka Szczecina** 👩‍💼
+**Wiek:** 32 lata | **Zawód:** Marketing Manager | **Mieszka:** Niebuszewo
+
+**Potrzeby:**
+- Szybki zakup biletu w drodze do pracy (tramwaj linia 3)
+- Powiadomienia o opóźnieniach ZANIM wyjdzie z domu
+- Integracja z parkingami P&R (jeździ autem + komunikacja)
+- Karta Mieszkańca ze zniżkami do Filharmonii
+
+**Pain points:**
+- Osobne aplikacje do biletów, parkingów, wydarzeń
+- Nie wie o opóźnieniach dopóki nie stoi na przystanku
+
+**User journey:**
+1. Rano sprawdza aplikację → widzi 5 min opóźnienia na linii 3
+2. Wychodzi 5 min później z domu (oszczędza czas!)
+3. Kupuje bilet miesięczny w 3 kliknięcia
+4. Dostaje powiadomienie o koncercie w Filharmonii (geo-targeted)
+5. Kupuje bilet ze zniżką Karty Mieszkańca
+
+---
+
+### Persona 2: **Hans - Turysta z Berlina** 🇩🇪
+**Wiek:** 45 lat | **Zawód:** Architekt | **Wizyta:** City break weekend
+
+**Potrzeby:**
+- Kupić bilet komunikacji **BEZ rejestracji** (nie zna polskiego)
+- Płatność PayPal/Apple Pay (nie ma polskiej karty)
+- Odkryć Szczecin (Filharmonia, Wały Chrobrego, Arkonka)
+- Prosty routing: z hotelu → Stare Miasto → Arkonka
+
+**Pain points:**
+- Nie wie jak kupić bilet (automaty po polsku, nie przyjmują kart zagranicznych)
+- Google Maps nie pokazuje real-time transportu Szczecina
+- Nie wie co warto zobaczyć
+
+**User journey:**
+1. Ląduje w Szczecinie → otwiera aplikację
+2. Wybiera "Guest / Tourist" mode (interfejs EN/DE)
+3. Kupuje bilet 24h w <30 sekund (Apple Pay)
+4. Widzi na mapie: Filharmonię, Arkonkę, Teatr Współczesny
+5. Klika "Kup bilet" → kupuje wstęp do Arkonki
+6. Routing multimodalny: hotel → pieszo 5 min → tram 12 → Arkonka
+
+---
+
+### Persona 3: **Kasia - Studentka (19 lat)** 🎓
+**Uczelnia:** Uniwersytet Szczeciński | **Mieszka:** Akademik Gumieńce
+
+**Potrzeby:**
+- Bilety ulgowe
+- Powiadomienia o zmianach tras do uczelni
+- Integracja z eventami studenckimi (koncerty, kino)
+- Tracking budżetu na transport
+
+**Pain points:**
+- Zapomina kupić bilet → mandat
+- Nie wie o zmianach w kursach (remonty)
+
+**User journey:**
+1. Ustawia alert: "Powiadom mnie o zmianach na linii 60"
+2. Dostaje push: "Linia 60 objazd 15-20.10"
+3. Kupuje bilet miesięczny ulgowy
+4. Aplikacja pokazuje: "Wydałaś 100 zł na transport w tym miesiącu"
+5. Dostaje ofertę: "Kup karnet Fabryka Wody -20% dla studentów"
 
 🧩 Kluczowe moduły i priorytety
 🏆 Priorytetowe (MVP)

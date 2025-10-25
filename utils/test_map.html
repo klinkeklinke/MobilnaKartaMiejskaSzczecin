@@ -1,0 +1,2454 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d53d224fbb1109445a74d20f3fc25a8b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+    <div style="
+        position: fixed;
+        bottom: 50px; right: 50px; width: 220px;
+        background-color: white; border: 2px solid #0A2740;
+        z-index: 9999; font-size: 12px; padding: 10px;
+        border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    ">
+        <h4 style="margin: 0 0 10px 0; color: #0A2740;">Legenda</h4>
+
+        <b>Transport publiczny:</b><br>
+        <span style="color: blue;">●</span> Na czas<br>
+        <span style="color: red;">●</span> Opóźnienie (pulsujące)<br>
+        <br>
+
+        <b>Parkingi P+R:</b><br>
+        <span style="color: green;">●</span> Dużo miejsc (&lt;50%)<br>
+        <span style="color: orange;">●</span> Umiarkowane (50-80%)<br>
+        <span style="color: red;">●</span> Prawie pełne (&gt;80%)<br>
+        <br>
+
+        <b>Punkty POI:</b><br>
+        <span style="color: blue;">●</span> Baseny/Aquaparki<br>
+        <span style="color: purple;">●</span> Kultura<br>
+        <span style="color: darkred;">●</span> Dziedzictwo<br>
+    </div>
+    
+    
+            <div class="folium-map" id="map_d53d224fbb1109445a74d20f3fc25a8b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d53d224fbb1109445a74d20f3fc25a8b = L.map(
+                "map_d53d224fbb1109445a74d20f3fc25a8b",
+                {
+                    center: [53.4285, 14.5528],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: true,
+                }
+            );
+            L.control.scale().addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+
+            
+
+        
+    
+            var tile_layer_5aa9fb5909c1bf99e0335c993bee89c6 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 11, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_5aa9fb5909c1bf99e0335c993bee89c6.addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var marker_61e7aa9cf00f7c47de716c405fed6253 = L.marker(
+                [53.4200286865, 14.4870796204],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_fe391f498825cde4ec315cd14f013640 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_61e7aa9cf00f7c47de716c405fed6253.setIcon(icon_fe391f498825cde4ec315cd14f013640);
+        
+    
+            marker_61e7aa9cf00f7c47de716c405fed6253.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 60</b><br>
+            Kierunek: Klonowica Zajezdnia<br>
+            ✅ Na czas<br>
+            Prędkość: 10 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_5131f2948e5876634cc9ddd725c55b88 = L.marker(
+                [53.4272193909, 14.537899971],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_9b891589e23be566de72ff9b02a52aca = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_5131f2948e5876634cc9ddd725c55b88.setIcon(icon_9b891589e23be566de72ff9b02a52aca);
+        
+    
+            marker_5131f2948e5876634cc9ddd725c55b88.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 75</b><br>
+            Kierunek: Osiedle Zawadzkiego<br>
+            ✅ Na czas<br>
+            Prędkość: 25 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_94164c78e737ef18e09e119914d18213 = L.marker(
+                [53.4561195374, 14.5065898895],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_c7f71ed41449833e7f596c3239199193 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_94164c78e737ef18e09e119914d18213.setIcon(icon_c7f71ed41449833e7f596c3239199193);
+        
+    
+            marker_94164c78e737ef18e09e119914d18213.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 53</b><br>
+            Kierunek: Klonowica Zajezdnia<br>
+            ✅ Na czas<br>
+            Prędkość: 40 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_2fdfbcc4a1ac4d00d8eabec3c938d0fd = L.marker(
+                [53.4505004883, 14.5008001328],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_955553b9f38ce4d6f70d2f41b87607bc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_2fdfbcc4a1ac4d00d8eabec3c938d0fd.setIcon(icon_955553b9f38ce4d6f70d2f41b87607bc);
+        
+    
+            marker_2fdfbcc4a1ac4d00d8eabec3c938d0fd.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 53</b><br>
+            Kierunek: Zawadzkiego<br>
+            ✅ Na czas<br>
+            Prędkość: 20 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_8ec284f50b638ef3be4f293890c58a9f = L.marker(
+                [53.3869094849, 14.6822004318],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_03b3a0048e5f7739d9b29307b7303117 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_8ec284f50b638ef3be4f293890c58a9f.setIcon(icon_03b3a0048e5f7739d9b29307b7303117);
+        
+    
+            marker_8ec284f50b638ef3be4f293890c58a9f.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 54</b><br>
+            Kierunek: Zakłady Mięsne<br>
+            ✅ Na czas<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_6461db601288fd12c8f7166477e6cc25 = L.marker(
+                [53.4270401001, 14.7173299789],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_5084ea961845cce592cce54d477768bb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_6461db601288fd12c8f7166477e6cc25.setIcon(icon_5084ea961845cce592cce54d477768bb);
+        
+    
+            marker_6461db601288fd12c8f7166477e6cc25.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 77</b><br>
+            Kierunek: Osiedle Bukowe<br>
+            ✅ Na czas<br>
+            Prędkość: 25 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_e2916de4cec85c46e4c03de9bffb96fa = L.marker(
+                [53.3949394226, 14.670800209],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_af63f819a1b161ae1351a55d219366e0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_e2916de4cec85c46e4c03de9bffb96fa.setIcon(icon_af63f819a1b161ae1351a55d219366e0);
+        
+    
+            marker_e2916de4cec85c46e4c03de9bffb96fa.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 64</b><br>
+            Kierunek: Bagienna<br>
+            ✅ Na czas<br>
+            Prędkość: 30 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_099c5d9fc820a8df19f6a3b64f9bd029 = L.marker(
+                [53.4465789795, 14.5520401001],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_f464e2ddb85875ee514e20a0b08dcd4a = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            11\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_099c5d9fc820a8df19f6a3b64f9bd029.setIcon(div_icon_f464e2ddb85875ee514e20a0b08dcd4a);
+        
+    
+            marker_099c5d9fc820a8df19f6a3b64f9bd029.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 11</b><br>
+            Kierunek: Zajezdnia Pogodno<br>
+            ⚠️ Opóźnienie: 1 min<br>
+            Prędkość: 20 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_c3489dd06670be7b53e4319f4922e38a = L.marker(
+                [53.470451355, 14.4871397018],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_05f4de53ab4808c690ea043a937ebb96 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_c3489dd06670be7b53e4319f4922e38a.setIcon(icon_05f4de53ab4808c690ea043a937ebb96);
+        
+    
+            marker_c3489dd06670be7b53e4319f4922e38a.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 9</b><br>
+            Kierunek: Zajezdnia Pogodno<br>
+            ✅ Na czas<br>
+            Prędkość: 15 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_d2e4ca480047f21fb434077824e1c6bc = L.marker(
+                [53.4577102661, 14.5177497864],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_4aa00aeb79a1635ae72a122460ae14e8 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            3\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_d2e4ca480047f21fb434077824e1c6bc.setIcon(div_icon_4aa00aeb79a1635ae72a122460ae14e8);
+        
+    
+            marker_d2e4ca480047f21fb434077824e1c6bc.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 3</b><br>
+            Kierunek: Zajezdnia Golęcin<br>
+            ⚠️ Opóźnienie: 2 min<br>
+            Prędkość: 25 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_1b8fe5f4a454a15adb6e69ec551761e1 = L.marker(
+                [53.4412689209, 14.5759000778],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_01a377af18bec2b5205c2a1959ea1d26 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_1b8fe5f4a454a15adb6e69ec551761e1.setIcon(icon_01a377af18bec2b5205c2a1959ea1d26);
+        
+    
+            marker_1b8fe5f4a454a15adb6e69ec551761e1.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 6</b><br>
+            Kierunek: Gocław<br>
+            ✅ Na czas<br>
+            Prędkość: 5 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_c0ca2886b28e85538c8b9625f8392f14 = L.marker(
+                [53.4355316162, 14.5630502701],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_aed458ecf1e2639de1f530e150429c04 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_c0ca2886b28e85538c8b9625f8392f14.setIcon(icon_aed458ecf1e2639de1f530e150429c04);
+        
+    
+            marker_c0ca2886b28e85538c8b9625f8392f14.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 7</b><br>
+            Kierunek: Zajezdnia Golęcin<br>
+            ✅ Na czas<br>
+            Prędkość: 25 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_cf80571d187dac6f686efadb7386c450 = L.marker(
+                [53.3924217224, 14.6164598465],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_37b60200b24496f62c1077204b3fabf2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_cf80571d187dac6f686efadb7386c450.setIcon(icon_37b60200b24496f62c1077204b3fabf2);
+        
+    
+            marker_cf80571d187dac6f686efadb7386c450.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 2</b><br>
+            Kierunek: Turkusowa<br>
+            ✅ Na czas<br>
+            Prędkość: 30 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_13bad51329596417ef014072cc40b521 = L.marker(
+                [53.4552993774, 14.507229805],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_dd5157abc3135a1b1dc20294b2a1b47f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_13bad51329596417ef014072cc40b521.setIcon(icon_dd5157abc3135a1b1dc20294b2a1b47f);
+        
+    
+            marker_13bad51329596417ef014072cc40b521.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 8</b><br>
+            Kierunek: Zajezdnia Pogodno przez pl. Gałczyńskiego<br>
+            ✅ Na czas<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_3654f19e1184438cd09d1fda20038162 = L.marker(
+                [53.4443397522, 14.498339653],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_0dcda83fbdcd08aeffcc615dfc8935ef = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            7\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_3654f19e1184438cd09d1fda20038162.setIcon(div_icon_0dcda83fbdcd08aeffcc615dfc8935ef);
+        
+    
+            marker_3654f19e1184438cd09d1fda20038162.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 7</b><br>
+            Kierunek: Zajezdnia Pogodno przez Mickiewicza<br>
+            ⚠️ Opóźnienie: 1 min<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_293541ac2607a56ed9c79ec3da214bbe = L.marker(
+                [53.4320983887, 14.5536804199],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_d8c052f1a586de2e4357851827b76133 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_293541ac2607a56ed9c79ec3da214bbe.setIcon(icon_d8c052f1a586de2e4357851827b76133);
+        
+    
+            marker_293541ac2607a56ed9c79ec3da214bbe.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 2</b><br>
+            Kierunek: Zajezdnia Pogodno przez pl. Rodła<br>
+            ✅ Na czas<br>
+            Prędkość: 20 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_246c1c6cd8434e584f1d4b2e3be8a358 = L.marker(
+                [53.4741706848, 14.6033296585],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_fcd29ac1948b16b875486781d2fa1398 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_246c1c6cd8434e584f1d4b2e3be8a358.setIcon(icon_fcd29ac1948b16b875486781d2fa1398);
+        
+    
+            marker_246c1c6cd8434e584f1d4b2e3be8a358.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 6</b><br>
+            Kierunek: Zajezdnia Golęcin<br>
+            ✅ Na czas<br>
+            Prędkość: 15 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_2d23b33f47251c521244d14f7b82eebf = L.marker(
+                [53.448890686, 14.4875402451],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_cdc9a6c602c20d316b61739ee51a41be = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_2d23b33f47251c521244d14f7b82eebf.setIcon(icon_cdc9a6c602c20d316b61739ee51a41be);
+        
+    
+            marker_2d23b33f47251c521244d14f7b82eebf.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 7</b><br>
+            Kierunek: Zajezdnia Golęcin<br>
+            ✅ Na czas<br>
+            Prędkość: 10 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_df6830559330f2063bbe18d98a602d99 = L.marker(
+                [53.4400787354, 14.5749397278],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_c7f5492f5c1401d6394f95a4d741a991 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_df6830559330f2063bbe18d98a602d99.setIcon(icon_c7f5492f5c1401d6394f95a4d741a991);
+        
+    
+            marker_df6830559330f2063bbe18d98a602d99.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 3</b><br>
+            Kierunek: Zajezdnia Golęcin<br>
+            ✅ Na czas<br>
+            Prędkość: 20 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_c247949ffb18934731deb6b3e3b33fe0 = L.marker(
+                [53.4224510193, 14.5599803925],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_43db49a972884374d442b8199c40218a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_c247949ffb18934731deb6b3e3b33fe0.setIcon(icon_43db49a972884374d442b8199c40218a);
+        
+    
+            marker_c247949ffb18934731deb6b3e3b33fe0.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 8</b><br>
+            Kierunek: Zajezdnia Golęcin<br>
+            ✅ Na czas<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_7e3dce852c758de96442226f78f1a189 = L.marker(
+                [53.4090385437, 14.7010602951],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_90a5c45cb4010b26b9f0131b79a9cbfe = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            C\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_7e3dce852c758de96442226f78f1a189.setIcon(div_icon_90a5c45cb4010b26b9f0131b79a9cbfe);
+        
+    
+            marker_7e3dce852c758de96442226f78f1a189.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia C</b><br>
+            Kierunek: Osiedle Kasztanowe<br>
+            ⚠️ Opóźnienie: 6 min<br>
+            Prędkość: 25 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_8c4da0ee5d5a88918954ccddcd3b8b68 = L.marker(
+                [53.4356307983, 14.5638799667],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_c814e48de0eb8c72cc5d9863f113a5aa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_8c4da0ee5d5a88918954ccddcd3b8b68.setIcon(icon_c814e48de0eb8c72cc5d9863f113a5aa);
+        
+    
+            marker_8c4da0ee5d5a88918954ccddcd3b8b68.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 11</b><br>
+            Kierunek: Zajezdnia Pogodno przez Piłsudskiego<br>
+            ✅ Na czas<br>
+            Prędkość: 30 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_712907b851b31c242ac6d456ba07566b = L.marker(
+                [53.4258918762, 14.5461301804],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_8e2a4c3198faf3772f4be271d56630fd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_712907b851b31c242ac6d456ba07566b.setIcon(icon_8e2a4c3198faf3772f4be271d56630fd);
+        
+    
+            marker_712907b851b31c242ac6d456ba07566b.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 9</b><br>
+            Kierunek: Zajezdnia Pogodno<br>
+            ✅ Na czas<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_304911d95753bb7fe3d625a28f159982 = L.marker(
+                [53.4040985107, 14.5968599319],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_6bd0bab4f890d19c39afb6489a0f04ab = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            2\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_304911d95753bb7fe3d625a28f159982.setIcon(div_icon_6bd0bab4f890d19c39afb6489a0f04ab);
+        
+    
+            marker_304911d95753bb7fe3d625a28f159982.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 2</b><br>
+            Kierunek: Zajezdnia Pogodno przez Arkońską<br>
+            ⚠️ Opóźnienie: 1 min<br>
+            Prędkość: 40 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_596df7b0cd72de1622d583b4b975ce93 = L.marker(
+                [53.4407615662, 14.5316400528],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_abc412c9c4321522704106096fc1016a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_596df7b0cd72de1622d583b4b975ce93.setIcon(icon_abc412c9c4321522704106096fc1016a);
+        
+    
+            marker_596df7b0cd72de1622d583b4b975ce93.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 11</b><br>
+            Kierunek: Zajezdnia Pogodno<br>
+            ✅ Na czas<br>
+            Prędkość: 10 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_55f7462f7c1b02d342ea61522c94a003 = L.marker(
+                [53.3968696594, 14.6657896042],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_608c6f00750c8862aee42c4168630d61 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_55f7462f7c1b02d342ea61522c94a003.setIcon(icon_608c6f00750c8862aee42c4168630d61);
+        
+    
+            marker_55f7462f7c1b02d342ea61522c94a003.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 56</b><br>
+            Kierunek: Dąbie Osiedle<br>
+            ✅ Na czas<br>
+            Prędkość: 40 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_5e84c67aec21bdd4283df64d4d0c02e8 = L.marker(
+                [53.4400787354, 14.5635099411],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_daf307a32ef92e46f1aab7be0cd0bf73 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            60\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_5e84c67aec21bdd4283df64d4d0c02e8.setIcon(div_icon_daf307a32ef92e46f1aab7be0cd0bf73);
+        
+    
+            marker_5e84c67aec21bdd4283df64d4d0c02e8.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 60</b><br>
+            Kierunek: Stocznia Szczecińska<br>
+            ⚠️ Opóźnienie: 1 min<br>
+            Prędkość: 20 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_4427567ebdfc8dd6d874d829eb84961e = L.marker(
+                [53.4397697449, 14.5617399216],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_274de64895d52b6468abe807e45215fc = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            53\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_4427567ebdfc8dd6d874d829eb84961e.setIcon(div_icon_274de64895d52b6468abe807e45215fc);
+        
+    
+            marker_4427567ebdfc8dd6d874d829eb84961e.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 53</b><br>
+            Kierunek: Klonowica Zajezdnia<br>
+            ⚠️ Opóźnienie: 1 min<br>
+            Prędkość: 5 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_cb343f28aa4e1cd7f97d298761bb413f = L.marker(
+                [53.4561691284, 14.5060997009],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_8150a1919ec1de6ee688f0069576a890 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_cb343f28aa4e1cd7f97d298761bb413f.setIcon(icon_8150a1919ec1de6ee688f0069576a890);
+        
+    
+            marker_cb343f28aa4e1cd7f97d298761bb413f.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 9</b><br>
+            Kierunek: Zajezdnia Pogodno<br>
+            ✅ Na czas<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_f0a20809765a394a1712a858819a8d69 = L.marker(
+                [53.4566993713, 14.5050897598],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_4fd5b3187144db6200193d27356b8eee = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_f0a20809765a394a1712a858819a8d69.setIcon(icon_4fd5b3187144db6200193d27356b8eee);
+        
+    
+            marker_f0a20809765a394a1712a858819a8d69.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 5</b><br>
+            Kierunek: Zajezdnia Pogodno przez Mickiewicza<br>
+            ✅ Na czas<br>
+            Prędkość: 5 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_3f88ee79999e7f6e4b076a6c3de13a98 = L.marker(
+                [53.436088562, 14.5377702713],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_220d7f3f6cb7c6c26bbfdc0173504409 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_3f88ee79999e7f6e4b076a6c3de13a98.setIcon(icon_220d7f3f6cb7c6c26bbfdc0173504409);
+        
+    
+            marker_3f88ee79999e7f6e4b076a6c3de13a98.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 5</b><br>
+            Kierunek: Zajezdnia Pogodno przez al. Wojska Polskiego<br>
+            ✅ Na czas<br>
+            Prędkość: 25 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_26e0e5b00ad1bdf6735584de2094c663 = L.marker(
+                [53.4271316528, 14.5368099213],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_ac23719b463b7910891650d6665d981d = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            8\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_26e0e5b00ad1bdf6735584de2094c663.setIcon(div_icon_ac23719b463b7910891650d6665d981d);
+        
+    
+            marker_26e0e5b00ad1bdf6735584de2094c663.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 8</b><br>
+            Kierunek: Zajezdnia Pogodno przez Piłsudskiego<br>
+            ⚠️ Opóźnienie: 1 min<br>
+            Prędkość: 15 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_95414ad3f818e0b4dd4ac4835710b5e5 = L.marker(
+                [53.4503211975, 14.5149202347],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_ff5d4fb8b5b1e47d6440c5efa588b1a7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_95414ad3f818e0b4dd4ac4835710b5e5.setIcon(icon_ff5d4fb8b5b1e47d6440c5efa588b1a7);
+        
+    
+            marker_95414ad3f818e0b4dd4ac4835710b5e5.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 1</b><br>
+            Kierunek: Osiedle Zawadzkiego<br>
+            ✅ Na czas<br>
+            Prędkość: 20 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_47a2a5d6a78e29fece07f60ee9ccec14 = L.marker(
+                [53.4443817139, 14.544549942],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_a4400fd7648bdb30988a7ee03304fee2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_47a2a5d6a78e29fece07f60ee9ccec14.setIcon(icon_a4400fd7648bdb30988a7ee03304fee2);
+        
+    
+            marker_47a2a5d6a78e29fece07f60ee9ccec14.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 2</b><br>
+            Kierunek: Zajezdnia Pogodno przez Arkońską<br>
+            ✅ Na czas<br>
+            Prędkość: 15 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_72b9783d7cbac03a0662dfc18fb303e2 = L.marker(
+                [53.379360199, 14.6444196701],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_99435a53f335dc8a3fa11f60b3ef9e63 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_72b9783d7cbac03a0662dfc18fb303e2.setIcon(icon_99435a53f335dc8a3fa11f60b3ef9e63);
+        
+    
+            marker_72b9783d7cbac03a0662dfc18fb303e2.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 8</b><br>
+            Kierunek: Turkusowa<br>
+            ✅ Na czas<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_1eb80802ac5039779f8fd35e15a14c39 = L.marker(
+                [53.451171875, 14.528960228],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_7545de4b643ed1b74a6f9f8af5e552bf = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            3\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_1eb80802ac5039779f8fd35e15a14c39.setIcon(div_icon_7545de4b643ed1b74a6f9f8af5e552bf);
+        
+    
+            marker_1eb80802ac5039779f8fd35e15a14c39.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 3</b><br>
+            Kierunek: Osiedle Zawadzkiego<br>
+            ⚠️ Opóźnienie: 1 min<br>
+            Prędkość: 15 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_11c2249a79c1ca0fdd4ffb8c154d204e = L.marker(
+                [53.3868408203, 14.6338100433],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_f860e9e09109d7e959c214faaea1ba07 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_11c2249a79c1ca0fdd4ffb8c154d204e.setIcon(icon_f860e9e09109d7e959c214faaea1ba07);
+        
+    
+            marker_11c2249a79c1ca0fdd4ffb8c154d204e.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 7</b><br>
+            Kierunek: Zajezdnia Pogodno przez Mickiewicza<br>
+            ✅ Na czas<br>
+            Prędkość: 30 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_e7e2fcb82f9da635f5981195628991bb = L.marker(
+                [53.4163284302, 14.5481996536],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_7dcda2a9ce016ecdbbeeee22d6cdea74 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_e7e2fcb82f9da635f5981195628991bb.setIcon(icon_7dcda2a9ce016ecdbbeeee22d6cdea74);
+        
+    
+            marker_e7e2fcb82f9da635f5981195628991bb.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 3</b><br>
+            Kierunek: Zajezdnia Pogodno<br>
+            ✅ Na czas<br>
+            Prędkość: 40 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_9a8885435c6c5b7906be9c1de30f97d0 = L.marker(
+                [53.4330787659, 14.5448598862],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_d34901a7552df6bf44725a252e0ba8e9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_9a8885435c6c5b7906be9c1de30f97d0.setIcon(icon_d34901a7552df6bf44725a252e0ba8e9);
+        
+    
+            marker_9a8885435c6c5b7906be9c1de30f97d0.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 1</b><br>
+            Kierunek: Zajezdnia Pogodno<br>
+            ✅ Na czas<br>
+            Prędkość: 25 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_c9f8fb02ebe810a360610c7d82a83803 = L.marker(
+                [53.3804092407, 14.6438102722],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_114b77035c568808b26001ffcaa1c7f6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_c9f8fb02ebe810a360610c7d82a83803.setIcon(icon_114b77035c568808b26001ffcaa1c7f6);
+        
+    
+            marker_c9f8fb02ebe810a360610c7d82a83803.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 65</b><br>
+            Kierunek: Turkusowa<br>
+            ✅ Na czas<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_74c389764dbd5c4ea0c052565b5399cd = L.marker(
+                [53.4277496338, 14.7204904556],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_b0e1dc7f75cc5434531fde79c57973a4 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            77\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_74c389764dbd5c4ea0c052565b5399cd.setIcon(div_icon_b0e1dc7f75cc5434531fde79c57973a4);
+        
+    
+            marker_74c389764dbd5c4ea0c052565b5399cd.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 77</b><br>
+            Kierunek: Osiedle Kasztanowe<br>
+            ⚠️ Opóźnienie: 1 min<br>
+            Prędkość: 20 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_95d610612c1eb22562e875c57b8e1f4b = L.marker(
+                [53.3789215088, 14.660490036],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_812d00f08baa0cd901430144cb0f6470 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_95d610612c1eb22562e875c57b8e1f4b.setIcon(icon_812d00f08baa0cd901430144cb0f6470);
+        
+    
+            marker_95d610612c1eb22562e875c57b8e1f4b.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 84</b><br>
+            Kierunek: Osiedle Słoneczne<br>
+            ✅ Na czas<br>
+            Prędkość: 35 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_e2ee246649db2de6d8be84fdca9ce8ae = L.marker(
+                [53.3649597168, 14.7473602295],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_a410a5ef79c39cd5d8922944741ca924 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_e2ee246649db2de6d8be84fdca9ce8ae.setIcon(icon_a410a5ef79c39cd5d8922944741ca924);
+        
+    
+            marker_e2ee246649db2de6d8be84fdca9ce8ae.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 93</b><br>
+            Kierunek: Struga Zajezdnia<br>
+            ✅ Na czas<br>
+            Prędkość: 25 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_b66d89a754102b9b31ee081b04ec4ecc = L.marker(
+                [53.3825187683, 14.6828203201],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_8b141cc7f1bf7b527abcfa0b43a176a8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_b66d89a754102b9b31ee081b04ec4ecc.setIcon(icon_8b141cc7f1bf7b527abcfa0b43a176a8);
+        
+    
+            marker_b66d89a754102b9b31ee081b04ec4ecc.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 79</b><br>
+            Kierunek: Struga Zajezdnia<br>
+            ✅ Na czas<br>
+            Prędkość: 20 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_ef82f450eb1ba22906c8a61cb776b02b = L.marker(
+                [53.4313087463, 14.5563001633],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_b194ba940b6ddd35a72d4a02fb0de0ac = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            107\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_ef82f450eb1ba22906c8a61cb776b02b.setIcon(div_icon_b194ba940b6ddd35a72d4a02fb0de0ac);
+        
+    
+            marker_ef82f450eb1ba22906c8a61cb776b02b.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 107</b><br>
+            Kierunek: Police Wyszyńskiego Polana<br>
+            ⚠️ Opóźnienie: 2 min<br>
+            Prędkość: 15 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_88c9ae2efea8a980396111271a438b54 = L.marker(
+                [53.4712181091, 14.4866800308],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_bd4035cb385a7c86fd8dca283c3f95c3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_88c9ae2efea8a980396111271a438b54.setIcon(icon_bd4035cb385a7c86fd8dca283c3f95c3);
+        
+    
+            marker_88c9ae2efea8a980396111271a438b54.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 103</b><br>
+            Kierunek: Głębokie<br>
+            ✅ Na czas<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_724890e1e48ad7b5d19dc45525a05f6e = L.marker(
+                [53.4171409607, 14.5680904388],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_dd7bd42da9b23dee938a4fd0fa7d5a22 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            B\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_724890e1e48ad7b5d19dc45525a05f6e.setIcon(div_icon_dd7bd42da9b23dee938a4fd0fa7d5a22);
+        
+    
+            marker_724890e1e48ad7b5d19dc45525a05f6e.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia B</b><br>
+            Kierunek: Osiedle Słoneczne<br>
+            ⚠️ Opóźnienie: 2 min<br>
+            Prędkość: 50 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_12f4a9c40b72709b7ffb40abf3242228 = L.marker(
+                [53.3927116394, 14.496219635],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_aebd0d10c8357742748de6177e2538ff = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_12f4a9c40b72709b7ffb40abf3242228.setIcon(icon_aebd0d10c8357742748de6177e2538ff);
+        
+    
+            marker_12f4a9c40b72709b7ffb40abf3242228.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 61</b><br>
+            Kierunek: SKM Dworzec Główny (Owocowa)<br>
+            ✅ Na czas<br>
+            Prędkość: 45 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_e5fecef4a6a8c46301926f3380cad8b0 = L.marker(
+                [53.4439811707, 14.5481595993],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_fc5a1af09981e85d213a42228285b062 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_e5fecef4a6a8c46301926f3380cad8b0.setIcon(icon_fc5a1af09981e85d213a42228285b062);
+        
+    
+            marker_e5fecef4a6a8c46301926f3380cad8b0.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 99</b><br>
+            Kierunek: Kołłątaja<br>
+            ✅ Na czas<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_13488fc8ec2b9c8286ac2756a0abd8ab = L.marker(
+                [53.4423408508, 14.4927597046],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_e610399604b32ef06ba66ba63e2a9177 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            80\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_13488fc8ec2b9c8286ac2756a0abd8ab.setIcon(div_icon_e610399604b32ef06ba66ba63e2a9177);
+        
+    
+            marker_13488fc8ec2b9c8286ac2756a0abd8ab.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 80</b><br>
+            Kierunek: Zakłady Piekarnicze<br>
+            ⚠️ Opóźnienie: 1 min<br>
+            Prędkość: 20 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_47c94909ee0ae9087ebdf30e6eb7da23 = L.marker(
+                [53.4547195435, 14.5486001968],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_54356573730b92399c171468c8b10351 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_47c94909ee0ae9087ebdf30e6eb7da23.setIcon(icon_54356573730b92399c171468c8b10351);
+        
+    
+            marker_47c94909ee0ae9087ebdf30e6eb7da23.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 80</b><br>
+            Kierunek: Klonowica Zajezdnia<br>
+            ✅ Na czas<br>
+            Prędkość: 45 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_92a9f63776830fc801a467909ad73ca3 = L.marker(
+                [53.4596710205, 14.5943803787],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_ad39d156c33e23f52e5f793a744c0a61 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_92a9f63776830fc801a467909ad73ca3.setIcon(icon_ad39d156c33e23f52e5f793a744c0a61);
+        
+    
+            marker_92a9f63776830fc801a467909ad73ca3.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 99</b><br>
+            Kierunek: Zajezdnia Golęcin<br>
+            ✅ Na czas<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_c9c81d55d61c82384ad9427551d66175 = L.marker(
+                [53.4356498718, 14.5016803741],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_879cc1552ea72913d060208e6325bdb4 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            75\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_c9c81d55d61c82384ad9427551d66175.setIcon(div_icon_879cc1552ea72913d060208e6325bdb4);
+        
+    
+            marker_c9c81d55d61c82384ad9427551d66175.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 75</b><br>
+            Kierunek: Osiedle Zawadzkiego<br>
+            ⚠️ Opóźnienie: 1 min<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_55b6541bf63fb7dd033aa70dfa30817f = L.marker(
+                [53.3983612061, 14.5245800018],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_abae76c619ed1a75f4a19f0f5a738b98 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_55b6541bf63fb7dd033aa70dfa30817f.setIcon(icon_abae76c619ed1a75f4a19f0f5a738b98);
+        
+    
+            marker_55b6541bf63fb7dd033aa70dfa30817f.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 53</b><br>
+            Kierunek: Pomorzany Dobrzyńska<br>
+            ✅ Na czas<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_98298f54906199cd186860d1b06dca48 = L.marker(
+                [53.4327888489, 14.5475902557],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_0872d3e274b1bb4f3fa398dd5ff8eec6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_98298f54906199cd186860d1b06dca48.setIcon(icon_0872d3e274b1bb4f3fa398dd5ff8eec6);
+        
+    
+            marker_98298f54906199cd186860d1b06dca48.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 4</b><br>
+            Kierunek: Zajezdnia Pogodno<br>
+            ✅ Na czas<br>
+            Prędkość: 10 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_90408bb34fbc72a82f72e596e727adde = L.marker(
+                [53.450668335, 14.5630302429],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_ea066050e975174b0ce3bf02954f4588 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            101\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_90408bb34fbc72a82f72e596e727adde.setIcon(div_icon_ea066050e975174b0ce3bf02954f4588);
+        
+    
+            marker_90408bb34fbc72a82f72e596e727adde.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 101</b><br>
+            Kierunek: Police Rynek<br>
+            ⚠️ Opóźnienie: 3 min<br>
+            Prędkość: 10 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_2da9920d1cc5eab17e5192a1aab921ea = L.marker(
+                [53.4738883972, 14.5475797653],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_5707babfbf0be61bd9c1f95604fe8eda = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_2da9920d1cc5eab17e5192a1aab921ea.setIcon(icon_5707babfbf0be61bd9c1f95604fe8eda);
+        
+    
+            marker_2da9920d1cc5eab17e5192a1aab921ea.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 87</b><br>
+            Kierunek: Podbórz<br>
+            ✅ Na czas<br>
+            Prędkość: 25 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_3f929f1ae205ef62a7c71fbc07998468 = L.marker(
+                [53.4711685181, 14.5432395935],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_af1aa5d231a68652a3a217d5aafbf9f9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_3f929f1ae205ef62a7c71fbc07998468.setIcon(icon_af1aa5d231a68652a3a217d5aafbf9f9);
+        
+    
+            marker_3f929f1ae205ef62a7c71fbc07998468.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 87</b><br>
+            Kierunek: Kołłątaja<br>
+            ✅ Na czas<br>
+            Prędkość: 30 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_0aa86b354738a88ac5248fa664ab5a73 = L.marker(
+                [53.4615211487, 14.5919103622],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_4ee6a9aaa8230fbb20fb016789e7a077 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0aa86b354738a88ac5248fa664ab5a73.setIcon(icon_4ee6a9aaa8230fbb20fb016789e7a077);
+        
+    
+            marker_0aa86b354738a88ac5248fa664ab5a73.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 59</b><br>
+            Kierunek: Szosa Polska<br>
+            ✅ Na czas<br>
+            Prędkość: 30 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_d5e77edd017023b8880df4a153ba5b60 = L.marker(
+                [53.4051818848, 14.5247001648],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_35e6d9120e06f4659702cf2587bac9b7 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            811\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_d5e77edd017023b8880df4a153ba5b60.setIcon(div_icon_35e6d9120e06f4659702cf2587bac9b7);
+        
+    
+            marker_d5e77edd017023b8880df4a153ba5b60.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 811</b><br>
+            Kierunek: Pomorzany Dobrzyńska<br>
+            ⚠️ Opóźnienie: 2 min<br>
+            Prędkość: 10 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_d4fdbaf3e6ee964fecaa7ace4e4aeb67 = L.marker(
+                [53.4126281738, 14.5316295624],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_1d4f02fb4e98c8d46319790af3d1c828 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_d4fdbaf3e6ee964fecaa7ace4e4aeb67.setIcon(icon_1d4f02fb4e98c8d46319790af3d1c828);
+        
+    
+            marker_d4fdbaf3e6ee964fecaa7ace4e4aeb67.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 4</b><br>
+            Kierunek: Zajezdnia Pogodno<br>
+            ✅ Na czas<br>
+            Prędkość: 45 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_28f3af39d16c22eebad66607e6e4c7c4 = L.marker(
+                [53.4490013123, 14.5355796814],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_c11e8e8c81040f7e63fdd4dba02bdb2e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_28f3af39d16c22eebad66607e6e4c7c4.setIcon(icon_c11e8e8c81040f7e63fdd4dba02bdb2e);
+        
+    
+            marker_28f3af39d16c22eebad66607e6e4c7c4.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 4</b><br>
+            Kierunek: Zajezdnia Pogodno<br>
+            ✅ Na czas<br>
+            Prędkość: 10 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_4c387e9d3840fc148ce3500ed132fd68 = L.marker(
+                [53.4463005066, 14.5510997772],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_8c62c0b3c34b0dab2f55f3106140a5ee = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_4c387e9d3840fc148ce3500ed132fd68.setIcon(icon_8c62c0b3c34b0dab2f55f3106140a5ee);
+        
+    
+            marker_4c387e9d3840fc148ce3500ed132fd68.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 57</b><br>
+            Kierunek: Kołłątaja<br>
+            ✅ Na czas<br>
+            Prędkość: 25 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_f4f2e8f0ac6caa8243d827afbee48f7a = L.marker(
+                [53.4583396912, 14.5582304001],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_51e905769a52bcf74a3f799fec429350 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            57\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_f4f2e8f0ac6caa8243d827afbee48f7a.setIcon(div_icon_51e905769a52bcf74a3f799fec429350);
+        
+    
+            marker_f4f2e8f0ac6caa8243d827afbee48f7a.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 57</b><br>
+            Kierunek: Warszewo<br>
+            ⚠️ Opóźnienie: 1 min<br>
+            Prędkość: 10 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_892faf7e1136e03e1df312e5e97fdec3 = L.marker(
+                [53.5012207031, 14.5779895782],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_78a695a1367d52e27ccb9d3fd5f6c7b7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_892faf7e1136e03e1df312e5e97fdec3.setIcon(icon_78a695a1367d52e27ccb9d3fd5f6c7b7);
+        
+    
+            marker_892faf7e1136e03e1df312e5e97fdec3.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 107</b><br>
+            Kierunek: Police Wyszyńskiego Polana<br>
+            ✅ Na czas<br>
+            Prędkość: 55 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_5e0651583d22eea1174bf1f0f33de428 = L.marker(
+                [53.4568595886, 14.5047397614],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_0913daf5a4bd0f8e4fdb543ecb965b6c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "train", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_5e0651583d22eea1174bf1f0f33de428.setIcon(icon_0913daf5a4bd0f8e4fdb543ecb965b6c);
+        
+    
+            marker_5e0651583d22eea1174bf1f0f33de428.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 4</b><br>
+            Kierunek: Zajezdnia Pogodno<br>
+            ✅ Na czas<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_2a863b2220d536024d632a3130f6b766 = L.marker(
+                [53.3879508972, 14.5138196945],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_2058113482daf1aecc3e39e6827d7b29 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            61\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_2a863b2220d536024d632a3130f6b766.setIcon(div_icon_2058113482daf1aecc3e39e6827d7b29);
+        
+    
+            marker_2a863b2220d536024d632a3130f6b766.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 61</b><br>
+            Kierunek: SKM Podjuchy<br>
+            ⚠️ Opóźnienie: 2 min<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_4bd1ac4688b1981ebf087bde569ddd16 = L.marker(
+                [53.4258613586, 14.5459403992],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_14a7cf12a991abdb4cbaeb8800b70dd9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_4bd1ac4688b1981ebf087bde569ddd16.setIcon(icon_14a7cf12a991abdb4cbaeb8800b70dd9);
+        
+    
+            marker_4bd1ac4688b1981ebf087bde569ddd16.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 87</b><br>
+            Kierunek: SKM Dworzec Główny (Owocowa)<br>
+            ✅ Na czas<br>
+            Prędkość: 10 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_91abe423f91e50809fcc7e5af1268812 = L.marker(
+                [53.4196090698, 14.4811601639],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_69bebeb6f303f2f166fa2796f0df2209 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_91abe423f91e50809fcc7e5af1268812.setIcon(icon_69bebeb6f303f2f166fa2796f0df2209);
+        
+    
+            marker_91abe423f91e50809fcc7e5af1268812.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 88</b><br>
+            Kierunek: Okulickiego<br>
+            ✅ Na czas<br>
+            Prędkość: 25 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_d5138caea253935ffdd71d6a7ac11b7d = L.marker(
+                [53.3350982666, 14.5454902649],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_6f86d9dc0c7bb0a0aaa9f00829ac76be = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_d5138caea253935ffdd71d6a7ac11b7d.setIcon(icon_6f86d9dc0c7bb0a0aaa9f00829ac76be);
+        
+    
+            marker_d5138caea253935ffdd71d6a7ac11b7d.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 64</b><br>
+            Kierunek: Klucz Autostrada<br>
+            ✅ Na czas<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_17becccd74900249176d9de86e6d47e7 = L.marker(
+                [53.4593086243, 14.5314998627],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_378188a73dfbbb197b1a5fe70232c573 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bus", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_17becccd74900249176d9de86e6d47e7.setIcon(icon_378188a73dfbbb197b1a5fe70232c573);
+        
+    
+            marker_17becccd74900249176d9de86e6d47e7.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia B</b><br>
+            Kierunek: Osiedle Arkońskie<br>
+            ✅ Na czas<br>
+            Prędkość: 0 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_4d2b4e2655e519873eba58e1f0c74329 = L.marker(
+                [53.3992118835, 14.6000795364],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var div_icon_56e4f5e92b5f16490757cc34e34a53af = L.divIcon({"className": "empty", "html": "\n    \u003cdiv class=\"pulsing-marker\" style=\"\n        position: relative;\n        width: 30px;\n        height: 30px;\n    \"\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            opacity: 0.6;\n            animation: pulse 2s infinite;\n        \"\u003e\u003c/div\u003e\n        \u003cdiv style=\"\n            position: absolute;\n            width: 100%;\n            height: 100%;\n            background-color: #dc3545;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n            font-weight: bold;\n            font-size: 10px;\n        \"\u003e\n            96\n        \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003cstyle\u003e\n        @keyframes pulse {\n            0%, 100% {\n                transform: scale(1);\n                opacity: 0.6;\n            }\n            50% {\n                transform: scale(1.3);\n                opacity: 0.3;\n            }\n        }\n    \u003c/style\u003e\n    "});
+            marker_4d2b4e2655e519873eba58e1f0c74329.setIcon(div_icon_56e4f5e92b5f16490757cc34e34a53af);
+        
+    
+            marker_4d2b4e2655e519873eba58e1f0c74329.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>Linia 96</b><br>
+            Kierunek: Basen Górniczy<br>
+            ⚠️ Opóźnienie: 1 min<br>
+            Prędkość: 40 km/h
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_ad5bd4ffa349c013ac7f49c70d237d10 = L.marker(
+                [53.471, 14.487],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_bfc37ef29156833f96fec5917d72ea84 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "car", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_ad5bd4ffa349c013ac7f49c70d237d10.setIcon(icon_bfc37ef29156833f96fec5917d72ea84);
+        
+    
+        var popup_ee0f4f98ffd5f79c396cd82eebf1341a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f717cd0fb494a43df4215139c64f3ef5 = $(`<div id="html_f717cd0fb494a43df4215139c64f3ef5" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; min-width: 200px;">             <h4 style="margin: 0 0 10px 0;">P+R Głębokie</h4>             <p style="margin: 5px 0;">                 <b>Wolne miejsca:</b> 114/150<br>                 <b>Obłożenie:</b> 24.0%<br>                 <b>Lokalizacja:</b> Skrzyżowanie ulic Miodowej i Kupczyka<br>                 <b>Obszar:</b> Północ             </p>             <p style="margin: 5px 0; font-size: 11px; color: #666;">                 ⚠️ Dane symulowane (brak API)<br>                 Ostatnia aktualizacja: 2025-10-25T23:12             </p>         </div>         </div>`)[0];
+                popup_ee0f4f98ffd5f79c396cd82eebf1341a.setContent(html_f717cd0fb494a43df4215139c64f3ef5);
+            
+        
+
+        marker_ad5bd4ffa349c013ac7f49c70d237d10.bindPopup(popup_ee0f4f98ffd5f79c396cd82eebf1341a)
+        ;
+
+        
+    
+    
+            marker_ad5bd4ffa349c013ac7f49c70d237d10.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>P+R Głębokie</b><br>
+            🟢 Zajęte: 36/150<br>
+            Obłożenie: 24.0%<br>
+            <small>Skrzyżowanie ulic Miodowej i Kupczyka</small>
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_ee400b252fe6ec2bb3809ccf7911ba09 = L.marker(
+                [53.388, 14.625],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_9252dad056d3ec4a515c7d011143770c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "car", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_ee400b252fe6ec2bb3809ccf7911ba09.setIcon(icon_9252dad056d3ec4a515c7d011143770c);
+        
+    
+        var popup_0b186beb98b49ae3960c75c82c32c8cf = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_67df25e21b5e01dc678e6bb73b23edc4 = $(`<div id="html_67df25e21b5e01dc678e6bb73b23edc4" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; min-width: 200px;">             <h4 style="margin: 0 0 10px 0;">P+R Hangarowa</h4>             <p style="margin: 5px 0;">                 <b>Wolne miejsca:</b> 67/120<br>                 <b>Obłożenie:</b> 44.2%<br>                 <b>Lokalizacja:</b> Skrzyżowanie ulic Eskadrowej, Leszczynowej i Hangarowej<br>                 <b>Obszar:</b> Wschód             </p>             <p style="margin: 5px 0; font-size: 11px; color: #666;">                 ⚠️ Dane symulowane (brak API)<br>                 Ostatnia aktualizacja: 2025-10-25T23:12             </p>         </div>         </div>`)[0];
+                popup_0b186beb98b49ae3960c75c82c32c8cf.setContent(html_67df25e21b5e01dc678e6bb73b23edc4);
+            
+        
+
+        marker_ee400b252fe6ec2bb3809ccf7911ba09.bindPopup(popup_0b186beb98b49ae3960c75c82c32c8cf)
+        ;
+
+        
+    
+    
+            marker_ee400b252fe6ec2bb3809ccf7911ba09.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>P+R Hangarowa</b><br>
+            🟢 Zajęte: 53/120<br>
+            Obłożenie: 44.2%<br>
+            <small>Skrzyżowanie ulic Eskadrowej, Leszczynowej i Hangarowej</small>
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_69a3c36127e887677896d83b6a2e2a39 = L.marker(
+                [53.38, 14.643],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_2d1455481d926c536a2d6455fae53b7c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "car", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_69a3c36127e887677896d83b6a2e2a39.setIcon(icon_2d1455481d926c536a2d6455fae53b7c);
+        
+    
+        var popup_354c892b539640ac1d8d9fb5da2cfd8d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cac6dc899f63bb36b474f96c59f021c9 = $(`<div id="html_cac6dc899f63bb36b474f96c59f021c9" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; min-width: 200px;">             <h4 style="margin: 0 0 10px 0;">P+R Turkusowa</h4>             <p style="margin: 5px 0;">                 <b>Wolne miejsca:</b> 126/200<br>                 <b>Obłożenie:</b> 37.0%<br>                 <b>Lokalizacja:</b> Przy pętli tramwajowo-autobusowej Turkusowa<br>                 <b>Obszar:</b> Wschód             </p>             <p style="margin: 5px 0; font-size: 11px; color: #666;">                 ⚠️ Dane symulowane (brak API)<br>                 Ostatnia aktualizacja: 2025-10-25T23:12             </p>         </div>         </div>`)[0];
+                popup_354c892b539640ac1d8d9fb5da2cfd8d.setContent(html_cac6dc899f63bb36b474f96c59f021c9);
+            
+        
+
+        marker_69a3c36127e887677896d83b6a2e2a39.bindPopup(popup_354c892b539640ac1d8d9fb5da2cfd8d)
+        ;
+
+        
+    
+    
+            marker_69a3c36127e887677896d83b6a2e2a39.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>P+R Turkusowa</b><br>
+            🟢 Zajęte: 74/200<br>
+            Obłożenie: 37.0%<br>
+            <small>Przy pętli tramwajowo-autobusowej Turkusowa</small>
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_50161d3878aede4bede810439aff5a69 = L.marker(
+                [53.36, 14.587],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_35b8bb946e89fffe7896eee1d76a354e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "car", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_50161d3878aede4bede810439aff5a69.setIcon(icon_35b8bb946e89fffe7896eee1d76a354e);
+        
+    
+        var popup_54acde5dd50d2601f21e4fb84fc14083 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0e6773397de97f58cf660ad0c6ef95b1 = $(`<div id="html_0e6773397de97f58cf660ad0c6ef95b1" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; min-width: 200px;">             <h4 style="margin: 0 0 10px 0;">P+R SKM Podjuchy</h4>             <p style="margin: 5px 0;">                 <b>Wolne miejsca:</b> 92/100<br>                 <b>Obłożenie:</b> 8.0%<br>                 <b>Lokalizacja:</b> Ulica Metalowa (przy stacji SKM)<br>                 <b>Obszar:</b> Południe             </p>             <p style="margin: 5px 0; font-size: 11px; color: #666;">                 ⚠️ Dane symulowane (brak API)<br>                 Ostatnia aktualizacja: 2025-10-25T23:12             </p>         </div>         </div>`)[0];
+                popup_54acde5dd50d2601f21e4fb84fc14083.setContent(html_0e6773397de97f58cf660ad0c6ef95b1);
+            
+        
+
+        marker_50161d3878aede4bede810439aff5a69.bindPopup(popup_54acde5dd50d2601f21e4fb84fc14083)
+        ;
+
+        
+    
+    
+            marker_50161d3878aede4bede810439aff5a69.bindTooltip(
+                `<div>
+                     
+        <div style="font-family: Arial; font-size: 12px;">
+            <b>P+R SKM Podjuchy</b><br>
+            🟢 Zajęte: 8/100<br>
+            Obłożenie: 8.0%<br>
+            <small>Ulica Metalowa (przy stacji SKM)</small>
+        </div>
+        
+                 </div>`,
+                {"sticky": false}
+            );
+        
+    
+            var marker_db0b097dd6295e6a585ac3ec45ebb93d = L.marker(
+                [53.4528, 14.4833],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_7d309e2d85b2b2837e084833831d001e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "swimmer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_db0b097dd6295e6a585ac3ec45ebb93d.setIcon(icon_7d309e2d85b2b2837e084833831d001e);
+        
+    
+        var popup_43658ef9ef09c5e124c4081ac2e671b8 = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_dac2dd30cda60c0d57a5032d268c91c8 = $(`<div id="html_dac2dd30cda60c0d57a5032d268c91c8" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; min-width: 250px;">             <h3 style="margin: 0 0 10px 0; color: #0A2740;">                 Arkonka             </h3>             <p style="margin: 5px 0;">                 Kompleks basenowo-rekreacyjny w Lesie Arkońskim<br>                 <br>                 <b>Adres:</b> ul. Arkońska 30a, 71-470 Szczecin<br>                 <b>Transport:</b> Tramwaj 1, 9, Autobus 80<br>                 <b>Telefon:</b> 91 433 60 67<br>             </p>                          <a href="https://arkonka.szczecin.eu/" target="_blank"                style="display: inline-block; margin-top: 10px;                       padding: 8px 16px; background-color: #00AEEF;                       color: white; text-decoration: none; border-radius: 4px;                       font-weight: bold;">                 🎫 Kup bilet             </a>                      </div>         </div>`)[0];
+                popup_43658ef9ef09c5e124c4081ac2e671b8.setContent(html_dac2dd30cda60c0d57a5032d268c91c8);
+            
+        
+
+        marker_db0b097dd6295e6a585ac3ec45ebb93d.bindPopup(popup_43658ef9ef09c5e124c4081ac2e671b8)
+        ;
+
+        
+    
+    
+            marker_db0b097dd6295e6a585ac3ec45ebb93d.bindTooltip(
+                `<div>
+                     Arkonka
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e33b860d54cfc338e55a041a2d82e0f4 = L.marker(
+                [53.4456, 14.5012],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_1d976072076df76053bbad2b62167748 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "swimmer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_e33b860d54cfc338e55a041a2d82e0f4.setIcon(icon_1d976072076df76053bbad2b62167748);
+        
+    
+        var popup_451e630eed40709c83425a5952be5bf0 = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_a7a65d59b1f813e72d03d59febeeba1e = $(`<div id="html_a7a65d59b1f813e72d03d59febeeba1e" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; min-width: 250px;">             <h3 style="margin: 0 0 10px 0; color: #0A2740;">                 Fabryka Wody             </h3>             <p style="margin: 5px 0;">                 Nowoczesny aquapark otwarty w 2024 roku<br>                 <br>                 <b>Adres:</b> ul. 1 Maja 41, Szczecin<br>                 <b>Transport:</b> Tramwaj 3, 6, 7, 9, 11, 12, Autobus 60 (160m)<br>                              </p>                          <a href="https://fabrykawody.eu/" target="_blank"                style="display: inline-block; margin-top: 10px;                       padding: 8px 16px; background-color: #00AEEF;                       color: white; text-decoration: none; border-radius: 4px;                       font-weight: bold;">                 🎫 Kup bilet             </a>                      </div>         </div>`)[0];
+                popup_451e630eed40709c83425a5952be5bf0.setContent(html_a7a65d59b1f813e72d03d59febeeba1e);
+            
+        
+
+        marker_e33b860d54cfc338e55a041a2d82e0f4.bindPopup(popup_451e630eed40709c83425a5952be5bf0)
+        ;
+
+        
+    
+    
+            marker_e33b860d54cfc338e55a041a2d82e0f4.bindTooltip(
+                `<div>
+                     Fabryka Wody
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b29b37b23f1c9d99f212315bdab3b939 = L.marker(
+                [53.4289, 14.5531],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_dab2ed0c23914b8b912fb51bd75f2777 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "theater-masks", "iconColor": "white", "markerColor": "purple", "prefix": "fa"}
+            );
+            marker_b29b37b23f1c9d99f212315bdab3b939.setIcon(icon_dab2ed0c23914b8b912fb51bd75f2777);
+        
+    
+        var popup_757f6d29dc7959ae235c94e67e217cac = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_0a438fae44f2251a31bcb0330f91b892 = $(`<div id="html_0a438fae44f2251a31bcb0330f91b892" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; min-width: 250px;">             <h3 style="margin: 0 0 10px 0; color: #0A2740;">                 Filharmonia im. Mieczysława Karłowicza             </h3>             <p style="margin: 5px 0;">                 Ikona architektury współczesnej Szczecina, nowa siedziba z 2014 roku<br>                 <br>                 <b>Adres:</b> ul. Małopolska 48, Szczecin<br>                 <b>Transport:</b> Tramwaj 3, 4, 6, 7, 12, Autobus 55, 57, 73<br>                 <b>Telefon:</b> +48 91 4226700<br>             </p>                          <a href="https://filharmonia.szczecin.pl/" target="_blank"                style="display: inline-block; margin-top: 10px;                       padding: 8px 16px; background-color: #00AEEF;                       color: white; text-decoration: none; border-radius: 4px;                       font-weight: bold;">                 🎫 Kup bilet             </a>                      </div>         </div>`)[0];
+                popup_757f6d29dc7959ae235c94e67e217cac.setContent(html_0a438fae44f2251a31bcb0330f91b892);
+            
+        
+
+        marker_b29b37b23f1c9d99f212315bdab3b939.bindPopup(popup_757f6d29dc7959ae235c94e67e217cac)
+        ;
+
+        
+    
+    
+            marker_b29b37b23f1c9d99f212315bdab3b939.bindTooltip(
+                `<div>
+                     Filharmonia im. Mieczysława Karłowicza
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0f3d5337efd0086c0615c515e8406c3d = L.marker(
+                [53.4294, 14.5606],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_03e14609911d5e4718d7952d749b859b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "theater-masks", "iconColor": "white", "markerColor": "purple", "prefix": "fa"}
+            );
+            marker_0f3d5337efd0086c0615c515e8406c3d.setIcon(icon_03e14609911d5e4718d7952d749b859b);
+        
+    
+        var popup_cb9f4bc1f9f010f8ea12d86a19355b00 = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_2eb10a891ecc181270f7052276e6a34b = $(`<div id="html_2eb10a891ecc181270f7052276e6a34b" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; min-width: 250px;">             <h3 style="margin: 0 0 10px 0; color: #0A2740;">                 Teatr Współczesny             </h3>             <p style="margin: 5px 0;">                 Teatr w zabytkowym budynku Muzeum Narodowego nad Odrą<br>                 <br>                 <b>Adres:</b> Wały Chrobrego 3, 70-500 Szczecin<br>                 <b>Transport:</b> Tramwaj 3, 4, 8, 11, Autobus 75<br>                 <b>Telefon:</b> +48 91 4224142<br>             </p>                          <a href="https://wspolczesny.szczecin.pl/" target="_blank"                style="display: inline-block; margin-top: 10px;                       padding: 8px 16px; background-color: #00AEEF;                       color: white; text-decoration: none; border-radius: 4px;                       font-weight: bold;">                 🎫 Kup bilet             </a>                      </div>         </div>`)[0];
+                popup_cb9f4bc1f9f010f8ea12d86a19355b00.setContent(html_2eb10a891ecc181270f7052276e6a34b);
+            
+        
+
+        marker_0f3d5337efd0086c0615c515e8406c3d.bindPopup(popup_cb9f4bc1f9f010f8ea12d86a19355b00)
+        ;
+
+        
+    
+    
+            marker_0f3d5337efd0086c0615c515e8406c3d.bindTooltip(
+                `<div>
+                     Teatr Współczesny
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e09ee9d9d4f4472b4d3eb7cec75d04c8 = L.marker(
+                [53.4186, 14.5328],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_bfa6f2b6550cbec9c5211b0eaa69bef2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "monument", "iconColor": "white", "markerColor": "darkred", "prefix": "fa"}
+            );
+            marker_e09ee9d9d4f4472b4d3eb7cec75d04c8.setIcon(icon_bfa6f2b6550cbec9c5211b0eaa69bef2);
+        
+    
+        var popup_3b7c14b90503a064d574d0522bfab04c = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_b0ed27f73ccb2a7cc657a5482a162728 = $(`<div id="html_b0ed27f73ccb2a7cc657a5482a162728" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; min-width: 250px;">             <h3 style="margin: 0 0 10px 0; color: #0A2740;">                 Cmentarz Centralny             </h3>             <p style="margin: 5px 0;">                 Historyczny cmentarz komunalny z XIX wieku, pomnik historii<br>                 <br>                 <b>Adres:</b> Al. Wojska Polskiego, Szczecin<br>                 <b>Transport:</b> Tramwaj 3, 5, 7, Autobus 64, 67<br>                              </p>                      </div>         </div>`)[0];
+                popup_3b7c14b90503a064d574d0522bfab04c.setContent(html_b0ed27f73ccb2a7cc657a5482a162728);
+            
+        
+
+        marker_e09ee9d9d4f4472b4d3eb7cec75d04c8.bindPopup(popup_3b7c14b90503a064d574d0522bfab04c)
+        ;
+
+        
+    
+    
+            marker_e09ee9d9d4f4472b4d3eb7cec75d04c8.bindTooltip(
+                `<div>
+                     Cmentarz Centralny
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0d837a43c2c1484dee1397ecbb80d877 = L.marker(
+                [53.4291, 14.5615],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_9653ca8c20465492c656880305a074c9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "monument", "iconColor": "white", "markerColor": "darkred", "prefix": "fa"}
+            );
+            marker_0d837a43c2c1484dee1397ecbb80d877.setIcon(icon_9653ca8c20465492c656880305a074c9);
+        
+    
+        var popup_2bb5ca2ac1066929431f3fa9cbf3d3ac = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_5ab85888b8e0662d5aaaa0a46cc7ec43 = $(`<div id="html_5ab85888b8e0662d5aaaa0a46cc7ec43" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; min-width: 250px;">             <h3 style="margin: 0 0 10px 0; color: #0A2740;">                 Wały Chrobrego             </h3>             <p style="margin: 5px 0;">                 Reprezentacyjny bulwar nad Odrą, jedna z ikon Szczecina<br>                 <br>                 <b>Adres:</b> Wały Chrobrego, 70-500 Szczecin<br>                 <b>Transport:</b> Tramwaj 3, 4, 8, 11, Autobus 75<br>                              </p>                      </div>         </div>`)[0];
+                popup_2bb5ca2ac1066929431f3fa9cbf3d3ac.setContent(html_5ab85888b8e0662d5aaaa0a46cc7ec43);
+            
+        
+
+        marker_0d837a43c2c1484dee1397ecbb80d877.bindPopup(popup_2bb5ca2ac1066929431f3fa9cbf3d3ac)
+        ;
+
+        
+    
+    
+            marker_0d837a43c2c1484dee1397ecbb80d877.bindTooltip(
+                `<div>
+                     Wały Chrobrego
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_67f89ee321e69119a7a6a54edfedfce0 = L.marker(
+                [53.4285, 14.5563],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_c0b91c55ace63453a946dca09d05a98f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "monument", "iconColor": "white", "markerColor": "darkred", "prefix": "fa"}
+            );
+            marker_67f89ee321e69119a7a6a54edfedfce0.setIcon(icon_c0b91c55ace63453a946dca09d05a98f);
+        
+    
+        var popup_20f6b77723f5fb01e26d18ecef602469 = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_9554f1528c058ad294397fdd129b64b9 = $(`<div id="html_9554f1528c058ad294397fdd129b64b9" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; min-width: 250px;">             <h3 style="margin: 0 0 10px 0; color: #0A2740;">                 Zamek Książąt Pomorskich             </h3>             <p style="margin: 5px 0;">                 Średniowieczny zamek, siedziba książąt pomorskich, centrum kultury<br>                 <br>                 <b>Adres:</b> ul. Korsarzy 34, 70-540 Szczecin<br>                 <b>Transport:</b> Tramwaj 1, 3, 4, 5, 6, Autobus 75<br>                 <b>Telefon:</b> +48 91 4345378<br>             </p>                          <a href="https://www.zamek.szczecin.pl/" target="_blank"                style="display: inline-block; margin-top: 10px;                       padding: 8px 16px; background-color: #00AEEF;                       color: white; text-decoration: none; border-radius: 4px;                       font-weight: bold;">                 🎫 Kup bilet             </a>                      </div>         </div>`)[0];
+                popup_20f6b77723f5fb01e26d18ecef602469.setContent(html_9554f1528c058ad294397fdd129b64b9);
+            
+        
+
+        marker_67f89ee321e69119a7a6a54edfedfce0.bindPopup(popup_20f6b77723f5fb01e26d18ecef602469)
+        ;
+
+        
+    
+    
+            marker_67f89ee321e69119a7a6a54edfedfce0.bindTooltip(
+                `<div>
+                     Zamek Książąt Pomorskich
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2f5db3710dc5a81284e143ba46826110 = L.marker(
+                [53.4157, 14.5592],
+                {}
+            ).addTo(map_d53d224fbb1109445a74d20f3fc25a8b);
+        
+    
+            var icon_38a876343871ff095314ab426f29f94c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "theater-masks", "iconColor": "white", "markerColor": "purple", "prefix": "fa"}
+            );
+            marker_2f5db3710dc5a81284e143ba46826110.setIcon(icon_38a876343871ff095314ab426f29f94c);
+        
+    
+        var popup_23ee24c92501d800209e65fb421280cb = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_c13368e7cb7405829f36403170f93b05 = $(`<div id="html_c13368e7cb7405829f36403170f93b05" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; min-width: 250px;">             <h3 style="margin: 0 0 10px 0; color: #0A2740;">                 Teatr Letni             </h3>             <p style="margin: 5px 0;">                 Plenerowa scena w Parku Kasprowicza, letnie koncerty i spektakle<br>                 <br>                 <b>Adres:</b> ul. Kolumba 61, 70-035 Szczecin<br>                 <b>Transport:</b> Tramwaj 5, 9, Autobus 52, 61, 75<br>                 <b>Telefon:</b> +48 91 4223838<br>             </p>                          <a href="https://www.teatrletni.eu/" target="_blank"                style="display: inline-block; margin-top: 10px;                       padding: 8px 16px; background-color: #00AEEF;                       color: white; text-decoration: none; border-radius: 4px;                       font-weight: bold;">                 🎫 Kup bilet             </a>                      </div>         </div>`)[0];
+                popup_23ee24c92501d800209e65fb421280cb.setContent(html_c13368e7cb7405829f36403170f93b05);
+            
+        
+
+        marker_2f5db3710dc5a81284e143ba46826110.bindPopup(popup_23ee24c92501d800209e65fb421280cb)
+        ;
+
+        
+    
+    
+            marker_2f5db3710dc5a81284e143ba46826110.bindTooltip(
+                `<div>
+                     Teatr Letni
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>

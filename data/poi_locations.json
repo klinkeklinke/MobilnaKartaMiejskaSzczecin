@@ -1,0 +1,165 @@
+{
+  "poi": [
+    {
+      "id": 1,
+      "name": "Arkonka",
+      "category": "aquapark",
+      "address": "ul. Arkońska 30a, 71-470 Szczecin",
+      "latitude": 53.4528,
+      "longitude": 14.4833,
+      "ticket_url": "https://arkonka.szczecin.eu/",
+      "description": "Kompleks basenowo-rekreacyjny w Lesie Arkońskim",
+      "icon": "swimmer",
+      "phone": "91 433 60 67",
+      "email": "zapytaj@arkonka.szczecin.eu",
+      "facilities": ["basen sportowy", "basen rekreacyjny", "zjeżdżalnie", "sauna", "siłownia"],
+      "accessibility": {
+        "wheelchair": true,
+        "parking": true,
+        "public_transport": ["Tramwaj 1, 9", "Autobus 80"]
+      }
+    },
+    {
+      "id": 2,
+      "name": "Fabryka Wody",
+      "category": "aquapark",
+      "address": "ul. 1 Maja 41, Szczecin",
+      "latitude": 53.4456,
+      "longitude": 14.5012,
+      "ticket_url": "https://fabrykawody.eu/",
+      "description": "Nowoczesny aquapark otwarty w 2024 roku",
+      "icon": "swimmer",
+      "phone": null,
+      "email": null,
+      "facilities": ["aquapark", "strefy wellness", "basen olimpijski", "zjeżdżalnie wodne"],
+      "accessibility": {
+        "wheelchair": true,
+        "parking": true,
+        "parking_spaces": 203,
+        "public_transport": ["Tramwaj 3, 6, 7, 9, 11, 12", "Autobus 60 (160m)"]
+      }
+    },
+    {
+      "id": 3,
+      "name": "Filharmonia im. Mieczysława Karłowicza",
+      "category": "culture",
+      "address": "ul. Małopolska 48, Szczecin",
+      "latitude": 53.4289,
+      "longitude": 14.5531,
+      "ticket_url": "https://filharmonia.szczecin.pl/",
+      "description": "Ikona architektury współczesnej Szczecina, nowa siedziba z 2014 roku",
+      "icon": "music",
+      "phone": "+48 91 4226700",
+      "email": "filharmonia@filharmonia.szczecin.pl",
+      "facilities": ["sala koncertowa duża (953 miejsca)", "sala kameralna (192 miejsca)", "restauracja"],
+      "accessibility": {
+        "wheelchair": true,
+        "parking": true,
+        "public_transport": ["Tramwaj 3, 4, 6, 7, 12", "Autobus 55, 57, 73"]
+      },
+      "events_type": ["koncerty symfoniczne", "recitale", "koncerty kameralne", "jazz"]
+    },
+    {
+      "id": 4,
+      "name": "Teatr Współczesny",
+      "category": "culture",
+      "address": "Wały Chrobrego 3, 70-500 Szczecin",
+      "latitude": 53.4294,
+      "longitude": 14.5606,
+      "ticket_url": "https://wspolczesny.szczecin.pl/",
+      "description": "Teatr w zabytkowym budynku Muzeum Narodowego nad Odrą",
+      "icon": "theater-masks",
+      "phone": "+48 91 4224142",
+      "email": "sekretariat@wspolczesny.szczecin.pl",
+      "facilities": ["scena główna", "Scena Nowe Sytuacje"],
+      "accessibility": {
+        "wheelchair": true,
+        "parking": false,
+        "public_transport": ["Tramwaj 3, 4, 8, 11", "Autobus 75"]
+      },
+      "events_type": ["spektakle teatralne", "performance", "sztuki współczesne"]
+    },
+    {
+      "id": 5,
+      "name": "Cmentarz Centralny",
+      "category": "heritage",
+      "address": "Al. Wojska Polskiego, Szczecin",
+      "latitude": 53.4186,
+      "longitude": 14.5328,
+      "ticket_url": null,
+      "description": "Historyczny cmentarz komunalny z XIX wieku, pomnik historii",
+      "icon": "landmark",
+      "phone": null,
+      "email": null,
+      "facilities": ["teren historyczny", "zabytkowe nagrobki", "alejki spacerowe"],
+      "accessibility": {
+        "wheelchair": true,
+        "parking": true,
+        "public_transport": ["Tramwaj 3, 5, 7", "Autobus 64, 67"]
+      },
+      "historical_note": "Założony w 1901 roku, jeden z najpiękniejszych cmentarzy w Polsce"
+    },
+    {
+      "id": 6,
+      "name": "Wały Chrobrego",
+      "category": "heritage",
+      "address": "Wały Chrobrego, 70-500 Szczecin",
+      "latitude": 53.4291,
+      "longitude": 14.5615,
+      "ticket_url": null,
+      "description": "Reprezentacyjny bulwar nad Odrą, jedna z ikon Szczecina",
+      "icon": "monument",
+      "phone": null,
+      "email": null,
+      "facilities": ["punkt widokowy", "pomnik", "schody terasowe", "nabrzeże"],
+      "accessibility": {
+        "wheelchair": false,
+        "parking": true,
+        "public_transport": ["Tramwaj 3, 4, 8, 11", "Autobus 75"]
+      },
+      "historical_note": "Powstały w latach 1902-1921, wzorowane na bulwarach hamburskich"
+    },
+    {
+      "id": 7,
+      "name": "Zamek Książąt Pomorskich",
+      "category": "heritage",
+      "address": "ul. Korsarzy 34, 70-540 Szczecin",
+      "latitude": 53.4285,
+      "longitude": 14.5563,
+      "ticket_url": "https://www.zamek.szczecin.pl/",
+      "description": "Średniowieczny zamek, siedziba książąt pomorskich, centrum kultury",
+      "icon": "chess-rook",
+      "phone": "+48 91 4345378",
+      "email": "zamek@zamek.szczecin.pl",
+      "facilities": ["muzeum", "sale wystawowe", "kawiarnia", "punkty widokowe"],
+      "accessibility": {
+        "wheelchair": true,
+        "parking": false,
+        "public_transport": ["Tramwaj 1, 3, 4, 5, 6", "Autobus 75"]
+      },
+      "events_type": ["wystawy", "koncerty", "spektakle", "festiwale filmowe"],
+      "historical_note": "Odbudowany po zniszczeniach wojennych, otwarty w 1980 roku"
+    },
+    {
+      "id": 8,
+      "name": "Teatr Letni",
+      "category": "culture",
+      "address": "ul. Kolumba 61, 70-035 Szczecin",
+      "latitude": 53.4157,
+      "longitude": 14.5592,
+      "ticket_url": "https://www.teatrletni.eu/",
+      "description": "Plenerowa scena w Parku Kasprowicza, letnie koncerty i spektakle",
+      "icon": "masks-theater",
+      "phone": "+48 91 4223838",
+      "email": "biuro@teatrletni.eu",
+      "facilities": ["scena plenerowa", "widownia 3000 miejsc", "bar", "toalety"],
+      "accessibility": {
+        "wheelchair": true,
+        "parking": true,
+        "public_transport": ["Tramwaj 5, 9", "Autobus 52, 61, 75"]
+      },
+      "events_type": ["koncerty", "spektakle", "festiwale", "imprezy masowe"],
+      "seasonal": "Głównie czerwiec-wrzesień"
+    }
+  ]
+}
