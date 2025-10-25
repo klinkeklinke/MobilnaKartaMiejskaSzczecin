@@ -111,7 +111,7 @@ def add_vehicle_markers(
             icon_name = 'bus'
 
         # Color based on delay
-        color = 'red' if is_delayed else 'blue'
+        color = '#dc3545' if is_delayed else '#007bff'  # Using Bootstrap colors for consistency
 
         # Tooltip text
         tooltip_html = f"""
@@ -133,14 +133,41 @@ def add_vehicle_markers(
                 tooltip_html
             )
         else:
-            # Standard marker
+            # Marker similar to pulsing but without animation
+            html = f"""
+            <div class="static-marker" style="
+                position: relative;
+                width: 30px;
+                height: 30px;
+            ">
+                <div style="
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: {color};
+                    border-radius: 50%;
+                    opacity: 0.6;
+                "></div>
+                <div style="
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: {color};
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    font-size: 14px;
+                ">
+                    <i class="fa fa-{icon_name}"></i>
+                </div>
+            </div>
+            """
+            
             marker = folium.Marker(
                 location=[lat, lon],
-                icon=folium.Icon(
-                    color=color,
-                    icon=icon_name,
-                    prefix='fa'
-                ),
+                icon=DivIcon(html=html),
                 tooltip=Tooltip(tooltip_html, sticky=False)
             )
 
@@ -195,12 +222,13 @@ def _create_pulsing_marker(
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 10px;
+            font-size: 14px;
         ">
-            {line_number}
+            <i class="fa fa-{icon_name}"></i>
         </div>
     </div>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @keyframes pulse {{
             0%, 100% {{
