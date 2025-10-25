@@ -74,7 +74,7 @@ def render_sidebar():
     """Render sidebar with controls and settings."""
     with st.sidebar:
         st.image("https://via.placeholder.com/300x100/0A2740/00AEEF?text=Szczecin+Live",
-                 use_container_width=True)
+                 width=300)
 
         st.markdown("---")
 
