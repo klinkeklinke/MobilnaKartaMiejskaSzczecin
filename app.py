@@ -19,6 +19,7 @@ from datetime import datetime
 # Import our utilities
 from utils.zditm_api import fetch_vehicles, get_api_stats
 from utils.mock_parking import generate_parking_data, get_parking_stats
+from utils.mock_activity import generate_activity_points, get_activity_stats
 from utils.map_builder import build_complete_map
 
 # Page configuration
@@ -85,6 +86,7 @@ def render_sidebar():
         show_transport = st.checkbox("🚌 Transport publiczny", value=True)
         show_parking = st.checkbox("🅿️ Parkingi P+R", value=True)
         show_poi = st.checkbox("📍 Punkty POI", value=True)
+        show_heatmap = st.checkbox("🔥 Heatmapa aktywności", value=True)
 
         # Additional options
         st.subheader("Opcje transportu")
@@ -122,6 +124,7 @@ def render_sidebar():
         'show_transport': show_transport,
         'show_parking': show_parking,
         'show_poi': show_poi,
+        'show_heatmap': show_heatmap,
         'show_delayed_only': show_delayed_only,
         'refresh_interval': refresh_interval,
         'auto_refresh': auto_refresh
@@ -140,9 +143,9 @@ def render_header():
     """, unsafe_allow_html=True)
 
 
-def render_stats(vehicles_data, parking_data):
+def render_stats(vehicles_data, parking_data, activity_data=None):
     """Render statistics section."""
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3, col4, col5 = st.columns(5)
 
     # Vehicle stats
     v_stats = get_api_stats(vehicles_data) if vehicles_data else {}
@@ -180,6 +183,16 @@ def render_stats(vehicles_data, parking_data):
             value=f"{avg_occ:.1f}%",
             delta=None
         )
+
+    # Activity stats
+    with col5:
+        if activity_data:
+            stats = get_activity_stats(activity_data)
+            st.metric(
+                label="👥 Aktywni użytkownicy",
+                value=stats.get('total_activities', 0),
+                delta=None
+            )
 
 
 def render_disclaimers():
@@ -239,10 +252,15 @@ def main():
         poi_data = None
         if settings['show_poi']:
             poi_data = load_poi_data()
+            
+        # Activity data (mock)
+        activity_data = None
+        if settings['show_heatmap']:
+            activity_data = generate_activity_points(1000, 24)  # 1000 points over 24 hours
 
     # Show stats
-    if vehicles_data or parking_data:
-        render_stats(vehicles_data, parking_data)
+    if vehicles_data or parking_data or activity_data:
+        render_stats(vehicles_data, parking_data, activity_data)
     else:
         st.info("ℹ️ Włącz warstwy w sidebar aby zobaczyć statystyki")
 
@@ -252,7 +270,7 @@ def main():
     st.subheader("🗺️ Mapa Interaktywna")
 
     # Check if we have any data
-    if not (vehicles_data or parking_data or poi_data):
+    if not (vehicles_data or parking_data or poi_data or activity_data):
         st.warning("⚠️ Włącz przynajmniej jedną warstwę w sidebar aby zobaczyć mapę")
     else:
         # Build map
@@ -261,6 +279,7 @@ def main():
                 vehicles=vehicles_data if settings['show_transport'] else [],
                 parking=parking_data if settings['show_parking'] else [],
                 poi=poi_data if settings['show_poi'] else [],
+                activity_points=activity_data if settings['show_heatmap'] else None,
                 show_delayed_only=settings['show_delayed_only']
             )
 

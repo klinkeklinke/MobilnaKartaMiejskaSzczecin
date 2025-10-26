@@ -13,6 +13,7 @@ Layers:
 
 import folium
 from folium import Icon, Marker, Popup, Tooltip, DivIcon
+from folium.plugins import HeatMap
 import json
 from typing import List, Dict, Optional
 
@@ -430,6 +431,63 @@ def add_poi_markers(
     return map_obj
 
 
+def add_activity_heatmap(
+    map_obj: folium.Map,
+    activity_points: List[Dict],
+    name: str = "Aktywność użytkowników"
+) -> folium.Map:
+    """
+    Add a heatmap layer showing user activity.
+
+    Args:
+        map_obj: Folium Map object
+        activity_points: List of activity point dictionaries
+        name: Name for the heatmap layer
+
+    Returns:
+        Updated Folium Map object
+    """
+    # Extract coordinates and weights
+    heatmap_data = []
+    for point in activity_points:
+        lat = point.get('latitude')
+        lon = point.get('longitude')
+        
+        if lat and lon:
+            # Weight based on activity type
+            weight = {
+                'ticket_purchase': 1.0,  # Highest weight for purchases
+                'route_search': 0.8,
+                'schedule_check': 0.6,
+                'parking_check': 0.7,
+                'map_view': 0.5      # Lowest weight for passive viewing
+            }.get(point.get('activity_type', 'map_view'), 0.5)
+            
+            heatmap_data.append([lat, lon, weight])
+
+    if heatmap_data:
+        # Add heatmap layer with a feature group
+        feature_group = folium.FeatureGroup(name=name)
+        HeatMap(
+            heatmap_data,
+            min_opacity=0.3,
+            max_opacity=0.8,
+            radius=15,
+            blur=10,
+            gradient={
+                0.4: '#00AEEF',  # Szczecin blue for low activity
+                0.65: '#FFD700',  # Gold for medium activity
+                1: '#0A2740'     # Navy for high activity
+            }
+        ).add_to(feature_group)
+        feature_group.add_to(map_obj)
+
+        # Always add layer control
+        folium.LayerControl().add_to(map_obj)
+
+    return map_obj
+
+
 def add_legend(map_obj: folium.Map) -> folium.Map:
     """
     Add a legend to the map explaining markers.
@@ -465,6 +523,14 @@ def add_legend(map_obj: folium.Map) -> folium.Map:
         <span style="color: blue;">●</span> Baseny/Aquaparki<br>
         <span style="color: purple;">●</span> Kultura<br>
         <span style="color: darkred;">●</span> Dziedzictwo<br>
+        <br>
+
+        <b>Heatmapa aktywności:</b><br>
+        <div style="background: linear-gradient(90deg, #00AEEF 0%, #FFD700 50%, #0A2740 100%);
+                    height: 10px; margin: 5px 0;"></div>
+        <span style="float: left">Niska</span>
+        <span style="float: right">Wysoka</span>
+        <div style="clear: both;"></div>
     </div>
     """
 
@@ -476,6 +542,7 @@ def build_complete_map(
     vehicles: List[Dict],
     parking: List[Dict],
     poi: List[Dict],
+    activity_points: List[Dict] = None,
     show_delayed_only: bool = False,
     add_legend_flag: bool = True
 ) -> folium.Map:
@@ -515,6 +582,8 @@ def build_complete_map(
         add_parking_markers(m, parking)
     if poi:
         add_poi_markers(m, poi)
+    if activity_points:
+        add_activity_heatmap(m, activity_points)
 
     # Add legend
     if add_legend_flag:
