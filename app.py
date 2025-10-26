@@ -86,7 +86,7 @@ def render_sidebar():
         show_transport = st.checkbox("🚌 Transport publiczny", value=True)
         show_parking = st.checkbox("🅿️ Parkingi P+R", value=True)
         show_poi = st.checkbox("📍 Punkty POI", value=True)
-        show_heatmap = st.checkbox("🔥 Heatmapa aktywności", value=True)
+        show_heatmap = st.checkbox("Miejsca przesiadek", value=True)
 
         # Additional options
         st.subheader("Opcje transportu")
@@ -108,16 +108,6 @@ def render_sidebar():
 
         st.markdown("---")
 
-        # Info section
-        st.subheader("ℹ️ Informacje")
-        st.info("""
-        **Szczecin #1 w Polsce!**
-
-        40,6% mieszkańców ma usługi w zasięgu 15 minut
-        (15-Minute City Index 2025)
-        """)
-
-        st.markdown("---")
         st.caption("v1.0.0 | Made with ❤️ for Szczecin")
 
     return {
