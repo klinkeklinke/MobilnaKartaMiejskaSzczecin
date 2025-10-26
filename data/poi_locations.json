@@ -5,14 +5,20 @@
       "name": "Arkonka",
       "category": "aquapark",
       "address": "ul. Arkońska 30a, 71-470 Szczecin",
-      "latitude": 53.4528,
-      "longitude": 14.4833,
+      "latitude": 53.462775,
+      "longitude": 14.503244,
       "ticket_url": "https://arkonka.szczecin.eu/",
       "description": "Kompleks basenowo-rekreacyjny w Lesie Arkońskim",
       "icon": "swimmer",
       "phone": "91 433 60 67",
       "email": "zapytaj@arkonka.szczecin.eu",
-      "facilities": ["basen sportowy", "basen rekreacyjny", "zjeżdżalnie", "sauna", "siłownia"],
+      "facilities": [
+        "basen sportowy",
+        "basen rekreacyjny",
+        "zjeżdżalnie",
+        "sauna",
+        "siłownia"
+      ],
       "accessibility": {
         "wheelchair": true,
         "parking": true,
@@ -24,14 +30,19 @@
       "name": "Fabryka Wody",
       "category": "aquapark",
       "address": "ul. 1 Maja 41, Szczecin",
-      "latitude": 53.4456,
-      "longitude": 14.5012,
+      "latitude": 53.444694,
+      "longitude": 14.567806,
       "ticket_url": "https://fabrykawody.eu/",
       "description": "Nowoczesny aquapark otwarty w 2024 roku",
       "icon": "swimmer",
       "phone": null,
       "email": null,
-      "facilities": ["aquapark", "strefy wellness", "basen olimpijski", "zjeżdżalnie wodne"],
+      "facilities": [
+        "aquapark",
+        "strefy wellness",
+        "basen olimpijski",
+        "zjeżdżalnie wodne"
+      ],
       "accessibility": {
         "wheelchair": true,
         "parking": true,
@@ -51,13 +62,22 @@
       "icon": "music",
       "phone": "+48 91 4226700",
       "email": "filharmonia@filharmonia.szczecin.pl",
-      "facilities": ["sala koncertowa duża (953 miejsca)", "sala kameralna (192 miejsca)", "restauracja"],
+      "facilities": [
+        "sala koncertowa duża (953 miejsca)",
+        "sala kameralna (192 miejsca)",
+        "restauracja"
+      ],
       "accessibility": {
         "wheelchair": true,
         "parking": true,
         "public_transport": ["Tramwaj 3, 4, 6, 7, 12", "Autobus 55, 57, 73"]
       },
-      "events_type": ["koncerty symfoniczne", "recitale", "koncerty kameralne", "jazz"]
+      "events_type": [
+        "koncerty symfoniczne",
+        "recitale",
+        "koncerty kameralne",
+        "jazz"
+      ]
     },
     {
       "id": 4,
@@ -77,7 +97,11 @@
         "parking": false,
         "public_transport": ["Tramwaj 3, 4, 8, 11", "Autobus 75"]
       },
-      "events_type": ["spektakle teatralne", "performance", "sztuki współczesne"]
+      "events_type": [
+        "spektakle teatralne",
+        "performance",
+        "sztuki współczesne"
+      ]
     },
     {
       "id": 5,
@@ -91,7 +115,11 @@
       "icon": "landmark",
       "phone": null,
       "email": null,
-      "facilities": ["teren historyczny", "zabytkowe nagrobki", "alejki spacerowe"],
+      "facilities": [
+        "teren historyczny",
+        "zabytkowe nagrobki",
+        "alejki spacerowe"
+      ],
       "accessibility": {
         "wheelchair": true,
         "parking": true,
@@ -131,7 +159,12 @@
       "icon": "chess-rook",
       "phone": "+48 91 4345378",
       "email": "zamek@zamek.szczecin.pl",
-      "facilities": ["muzeum", "sale wystawowe", "kawiarnia", "punkty widokowe"],
+      "facilities": [
+        "muzeum",
+        "sale wystawowe",
+        "kawiarnia",
+        "punkty widokowe"
+      ],
       "accessibility": {
         "wheelchair": true,
         "parking": false,
@@ -152,7 +185,12 @@
       "icon": "masks-theater",
       "phone": "+48 91 4223838",
       "email": "biuro@teatrletni.eu",
-      "facilities": ["scena plenerowa", "widownia 3000 miejsc", "bar", "toalety"],
+      "facilities": [
+        "scena plenerowa",
+        "widownia 3000 miejsc",
+        "bar",
+        "toalety"
+      ],
       "accessibility": {
         "wheelchair": true,
         "parking": true,
